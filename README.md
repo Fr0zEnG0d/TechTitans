@@ -40,8 +40,8 @@
     *   Player
     *   Invader
     *   MysteryShip (nave vermelha) \*
-*   Projectile
-*   Pillbox \*
+    *   Projectile
+    *   Pillbox \*
 
 ### Interfaces
 

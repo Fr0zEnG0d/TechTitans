@@ -34,6 +34,7 @@ public class EntityController
 
     private void ChangeModelPosition(ShipCommand command) {
         Vector2 position = m_model.Position;
+        float maxposition = m_model.MaxPosition;
         switch (command)
         {
             case ShipCommand.MoveLeft:
@@ -43,9 +44,14 @@ public class EntityController
                 position.x += m_speed * Time.deltaTime;
                 break;
         }
-        m_model.Position = position; //aqui o controller altera o model
+        
+        // Limitar a posição máxima lateral
+        position.x = Mathf.Clamp(position.x, -maxposition, maxposition); // "maxposition" é a posição mínima e máxima permitida
+
+        m_model.Position = position; // Aqui o controller altera o model
 
     }
+    
     private void Shoot() {
         try
         {

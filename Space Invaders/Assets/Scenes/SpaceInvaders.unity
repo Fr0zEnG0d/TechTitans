@@ -1578,6 +1578,7 @@ MonoBehaviour:
     m_projectilePrefab: {fileID: 0}
   m_playerModel:
     m_position: {x: 0, y: -10}
+    maxPosition: 7.6
     m_lives: 3
 --- !u!1 &2078192032
 GameObject:

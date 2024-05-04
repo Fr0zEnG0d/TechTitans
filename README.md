@@ -154,4 +154,6 @@
     *   Em EntityController, no método shoot(), haverá a tentativa de instanciar o projétil, mas cairá em exception pois ainda não foi criado o Prefab do projétil. 
         *  Debug.LogError("Error! Projectile prefab not set");
 
-
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/1219626169482219531/1236405578872524881/errorUnity.png?ex=6637e3ed&is=6636926d&hm=efb16d128e733972a1efce07cbf6c0165bd71fafbd3bc5fd355153a528465e0e&"">
+</p>

@@ -22,9 +22,10 @@ public class PlayerView : EntityView
         {
             outCommands.Add(ShipCommand.MoveRight);
         }
-        if(Input.GetKey(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             outCommands.Add(ShipCommand.Shoot);
+            //Debug.Log("Mouse button pressed");
         }
     }
 

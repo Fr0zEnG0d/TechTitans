@@ -1575,6 +1575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller:
     m_speed: 15
+    m_projectilePrefab: {fileID: 0}
   m_playerModel:
     m_position: {x: 0, y: -10}
     m_lives: 3

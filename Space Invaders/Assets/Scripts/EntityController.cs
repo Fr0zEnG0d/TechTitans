@@ -8,7 +8,7 @@ public class EntityController
 {
     private EntityModel m_model;
     [SerializeField] private float m_speed;
-
+    [SerializeField] private GameObject m_projectilePrefab;
 
     public void InitializeEntityController(EntityModel model) 
     { 
@@ -47,7 +47,15 @@ public class EntityController
 
     }
     private void Shoot() {
-        Debug.Log("SHOOT!!!"); //Debug,log apenas para testar o botao do mouse
+        try
+        {
+            GameObject.Instantiate(m_projectilePrefab, m_model.Position, Quaternion.identity); //tenta criar um projetil na posicao da entidade
+        }
+        catch (Exception exception) //exemplo de exception é quando o prefab não existir
+        {
+            Debug.LogException(exception);
+            Debug.LogError("Error! Projectile prefab not set");       
+        }
     }
 
     virtual public void NotifyDamageReceived() {

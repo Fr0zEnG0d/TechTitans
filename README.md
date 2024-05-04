@@ -144,3 +144,14 @@
 *   _Lógica da perda de perda de vidas ainda não foi implementada_
 
 *   _Interface gráfica de Score_
+
+
+* * *
+
+## Space Invaders - version 0.0.2 features:
+
+*   Implementação da instrução try-catch
+    *   Em EntityController, no método shoot(), haverá a tentativa de instanciar o projétil, mas cairá em exception pois ainda não foi criado o Prefab do projétil. 
+        *  Debug.LogError("Error! Projectile prefab not set");
+
+

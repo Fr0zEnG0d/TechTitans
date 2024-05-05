@@ -60,7 +60,7 @@ public class EntityController
         catch (Exception exception) //exemplo de exception é quando o prefab não existir
         {
             Debug.LogException(exception);
-            Debug.LogError("Error! Projectile prefab not set");       
+            Debug.LogError("Fault! Projectile prefab not set");       
         }
     }
 

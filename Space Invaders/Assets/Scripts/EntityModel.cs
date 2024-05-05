@@ -9,7 +9,8 @@ public class EntityModel
 {
     [SerializeField]
     private Vector2 m_position;
-    public float maxPosition;
+    [SerializeField]
+    private float m_maxPosition; 
     private bool m_isEntityAlive = true;
 
     public Vector2 Position {
@@ -20,16 +21,12 @@ public class EntityModel
             m_position = value;
         }
     }
-
+    
     public float MaxPosition
     {
         get
         {
-            return maxPosition;
-        }
-        set
-        {
-            maxPosition = value;
+            return m_maxPosition;
         }
     }
 

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : EntityView
+public class PlayerView : EntityView, IDamageReceiver
 {
 
+    [SerializeField]
+    private PlayerController m_shipController = new PlayerController();
     [SerializeField]
     private PlayerModel m_playerModel = new PlayerModel();
     public PlayerModel PlayerModel {  get { return m_playerModel; } }
@@ -29,8 +31,6 @@ public class PlayerView : EntityView
         }
     }
 
-    
-
     protected override void BeforeUpdate() //implementacao especifica para o Player
     {
         ReadInputFromUser(m_commands);
@@ -41,9 +41,14 @@ public class PlayerView : EntityView
         return m_playerModel;
     }
 
-    public override void ReceiveDamage()
+    public  void ReceiveDamage()
     {
-        base.ReceiveDamage(); //chama a implementacao da classe base (EntityView)
+        m_shipController.NotifyDamageReceived();
         OnPlayerReceivedDamage.Invoke(); //toda vez que dispara o evento, comunica que recebeu dano
+    }
+
+    protected override EntityController GetController()
+    {
+        return m_shipController;
     }
 }

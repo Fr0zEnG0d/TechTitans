@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2019386178178050830, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
       propertyPath: m_Name
-      value: Invader_03 Variant
+      value: Invader_03
       objectReference: {fileID: 0}
     - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103,5 +103,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2019386178178050830, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6129031833041607740}
   m_SourcePrefab: {fileID: 100100000, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
+--- !u!1 &5441939384609465632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2019386178178050830, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
+  m_PrefabInstance: {fileID: 6306141249140690478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6129031833041607740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441939384609465632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6b25b46378caa4f95db2a6088f1340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shipController:
+    m_speed: 6
+    m_projectilePrefab: {fileID: 1298444294329522007, guid: b02685bbf69a4f14cb012c5970ff47c6, type: 3}
+  m_model:
+    m_position: {x: 0, y: 0}
+    m_maxPosition: 14

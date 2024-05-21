@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
-{ MainMenu, Paused, Playing, GameOverScreen }
+{ None, MainMenu, Paused, Playing, GameOverScreen }
 public class GameFlowModel
 {
-    private GameState m_gameState;
+    private GameState m_gameState = GameState.None;
     private int m_gameScore = 0;
 
     public GameState GameState { 

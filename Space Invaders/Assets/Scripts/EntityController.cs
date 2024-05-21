@@ -6,11 +6,16 @@ using UnityEngine;
 [Serializable]
 public class EntityController
 {
-    private EntityModel m_model;
+    protected EntityModel m_model;
     [SerializeField] private float m_speed;
-    [SerializeField] private GameObject m_projectilePrefab;
 
-    public void InitializeEntityController(EntityModel model) 
+    protected GameObject m_entityGameObject;
+    public void SetGameObject(GameObject gameObject)
+    {
+        m_entityGameObject = gameObject;
+    }
+
+    virtual public void InitializeEntityController(EntityModel model) 
     { 
         m_model = model;
     }
@@ -20,15 +25,16 @@ public class EntityController
     {
         for (int i = 0; i < commands.Count; i++)
         {
-            if (commands[i] == ShipCommand.Shoot)
-            {
-                Shoot();
-            }
-            else
-            {
-                ChangeModelPosition(commands[i]);
-            }
-                 
+            ProcessCommand(commands[i]);
+        }
+    }
+
+    protected virtual void ProcessCommand(ShipCommand command)
+    {
+        if (command != ShipCommand.Shoot)
+        {
+       
+            ChangeModelPosition(command);
         }
     }
 
@@ -43,27 +49,27 @@ public class EntityController
             case ShipCommand.MoveRight:
                 position.x += m_speed * Time.deltaTime;
                 break;
+            case ShipCommand.MoveUp:
+                position.y += m_speed * Time.deltaTime;
+                break;
+            case ShipCommand.MoveDown:
+                position.y -= m_speed * Time.deltaTime;
+                break;
         }
         
         // Limitar a posição máxima lateral
         position.x = Mathf.Clamp(position.x, -maxposition, maxposition); // "maxposition" é a posição mínima e máxima permitida
 
+        // verificar posicao vertical e destruir se passar do limite da tela
+        if (position.y > 30 || position.y < -20)
+        {
+            m_model.IsEntityAlive = false;
+        }
+
         m_model.Position = position; // Aqui o controller altera o model
 
     }
     
-    private void Shoot() {
-        try
-        {
-            GameObject.Instantiate(m_projectilePrefab, m_model.Position, Quaternion.identity); //tenta criar um projetil na posicao da entidade
-        }
-        catch (Exception exception) //exemplo de exception é quando o prefab não existir
-        {
-            Debug.LogException(exception);
-            Debug.LogError("Fault! Projectile prefab not set");       
-        }
-    }
-
     virtual public void NotifyDamageReceived() {
         m_model.IsEntityAlive = false; 
     }

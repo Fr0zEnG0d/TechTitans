@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
-
-
-public class EntityView : MonoBehaviour, IDamageReceiver
+//entity view herda de monobehaviour
+public abstract class EntityView : MonoBehaviour 
 {
-    
-    [SerializeField] private EntityController m_controller = new EntityController(); //instancia EntityController
+
+    private EntityController m_controller;
     protected List<ShipCommand> m_commands; //Define uma lista do tipo ShipCommand
 
+
     // Start is called before the first frame update
-    void Start()
+    void Start() //é chamada uma vez no inicio e depois update é chamado a todo frame
     {
+        m_controller = GetController();
         m_controller.InitializeEntityController(GetModel()); //estabelece uma dependencia (conexao direta) entre model e controller
+        m_controller.SetGameObject(gameObject); //passa ref do gameObject para o controller
+        GetModel().Position = transform.position; //atribui a primeira posicao da entidade baseada no transform
         m_commands = new List<ShipCommand>(); //Cria a lista do tipo ShipCommand
     }
+
 
     // Update is called once per frame
     void Update()
@@ -43,12 +48,8 @@ public class EntityView : MonoBehaviour, IDamageReceiver
     virtual protected void BeforeUpdate() { }
 
     //Pega o model especifico das possiveis classes filhas e elas poderao fzer override
-    virtual protected EntityModel GetModel() {
-        return null;
-    }
+    abstract protected EntityModel GetModel(); //cada classe filha sera obrigada a implementar GetModel()
 
-    virtual public void ReceiveDamage()
-    {
-        m_controller.NotifyDamageReceived();
-    }
+    abstract protected EntityController GetController(); //cada classe filha sera obrigada a implementar GetController()
+      
 }

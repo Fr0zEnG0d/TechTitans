@@ -1,6 +1,6 @@
 ﻿
 using System;
-
+using UnityEngine;
 
 public class GameFlowController 
 {
@@ -28,7 +28,7 @@ public class GameFlowController
                 MainMenuUpdate();
                 break;
             case GameState.Paused:
-                //PausedUpdate();
+                PausedUpdate();
                 break;
             case GameState.Playing:
                 PlayingUpdate();
@@ -48,7 +48,7 @@ public class GameFlowController
                     ExitMainMenu();
                     break;
                 case GameState.Paused:
-                    //ExitPaused();
+                    ExitPaused();
                     break;
                 case GameState.Playing:
                     ExitPlaying();
@@ -65,7 +65,7 @@ public class GameFlowController
                     EnterMainMenu();
                     break;
                 case GameState.Paused:
-                    //EnterPaused();
+                    EnterPaused();
                     break;
                 case GameState.Playing:
                     EnterPlaying();
@@ -80,24 +80,28 @@ public class GameFlowController
         }
     }
 
-    
+    //??
+    public GameState GameState => m_gameFlowModel.GameState;
+
     private void EnterMainMenu()
     {
-        
+        // Implementação da lógica de entrada no menu principal
     }
     private void MainMenuUpdate()
     {
-
+        // Implementação da lógica de atualização do menu principal
     }
     private void ExitMainMenu()
     {
+        // Implementação da lógica de saída do menu principal
     }
 
 
     private void EnterPlaying()
     {
-
+        // Implementação da lógica de entrada no estado de jogo
     }
+
     private void PlayingUpdate()
     {
         if(!m_playerModel.IsEntityAlive)
@@ -108,7 +112,22 @@ public class GameFlowController
 
     private void ExitPlaying()
     {
-
+        // Implementação da lógica de saída do estado de jogo
     }
-    
+
+    private void EnterPaused()
+    {
+        Time.timeScale = 0f; // Pausar o tempo do jogo
+    }
+
+    private void PausedUpdate()
+    {
+        // Implementação da lógica de atualização do estado de pausa (se necessário)
+    }
+
+    private void ExitPaused()
+    {
+        Time.timeScale = 1f; // Retomar o tempo do jogo
+    }
+
 }

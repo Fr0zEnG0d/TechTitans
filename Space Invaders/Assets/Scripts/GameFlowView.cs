@@ -9,6 +9,7 @@ public class GameFlowView : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject Hud; //UI q fica na tela enquanto joga, score e vidas
+    public GameObject PauseMenu; // Menu de Pausa
 
     public TextMeshProUGUI LivesText;
     public TextMeshProUGUI ScoreText;
@@ -39,13 +40,21 @@ public class GameFlowView : MonoBehaviour
         PlayerView.enabled = false;
         Hud.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
+        PauseMenu.gameObject.SetActive(false); // Inicialmente, o menu de pausa está oculto
+
     }
 
     // Update is called once per frame
     void Update()
     {
         m_controller.UpdateCurrentState();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) // Pressione ESC para pausar/despausar
+        {
+            OnPauseButtonPressed();
+        }
     }
+
     //Atualiza texto do numero de vidas baseado no player model
     private void RefreshLivesText()
     {
@@ -65,6 +74,7 @@ public class GameFlowView : MonoBehaviour
                 MainMenu.SetActive(false);
                 break;
             case GameState.Paused:
+                PauseMenu.SetActive(false);
                 break;
             case GameState.Playing:
                 Hud.SetActive(false);
@@ -83,6 +93,7 @@ public class GameFlowView : MonoBehaviour
                 MainMenu.SetActive(true);
                 break;
             case GameState.Paused:
+                PauseMenu.SetActive(true);
                 break;
             case GameState.Playing:
                 Hud.SetActive(true);
@@ -96,6 +107,18 @@ public class GameFlowView : MonoBehaviour
     public void OnPlayButtonPressed()
     {
         m_controller.ChangeState(GameState.Playing);
+    }
+
+    public void OnPauseButtonPressed()
+    {
+        if (m_controller.GameState == GameState.Playing)
+        {
+            m_controller.ChangeState(GameState.Paused);
+        }
+        else if (m_controller.GameState == GameState.Paused)
+        {
+            m_controller.ChangeState(GameState.Playing);
+        }
     }
 
 }

@@ -34,7 +34,7 @@ public class GameFlowController
                 PlayingUpdate();
                 break;
             case GameState.GameOverScreen:
-                //GameOverScreenUpdate();
+                GameOverScreenUpdate();
                 break;
         }
     }
@@ -54,7 +54,7 @@ public class GameFlowController
                     ExitPlaying();
                     break;
                 case GameState.GameOverScreen:
-                    //ExitGameOverScreen();
+                    ExitGameOverScreen();
                     break;
             }
             StateExit(m_gameFlowModel.GameState);
@@ -71,7 +71,7 @@ public class GameFlowController
                     EnterPlaying();
                     break;
                 case GameState.GameOverScreen:
-                    //EnterGameOverScreen();
+                    EnterGameOverScreen();
                     break;
             }
             StateEnter(newState);
@@ -80,7 +80,6 @@ public class GameFlowController
         }
     }
 
-    //??
     public GameState GameState => m_gameFlowModel.GameState;
 
     private void EnterMainMenu()
@@ -128,6 +127,21 @@ public class GameFlowController
     private void ExitPaused()
     {
         Time.timeScale = 1f; // Retomar o tempo do jogo
+    }
+
+    private void EnterGameOverScreen()
+    {
+        // Implementação da lógica de entrada na tela de game over
+    }
+
+    private void GameOverScreenUpdate()
+    {
+        // Implementação da lógica de atualização da tela de game over (se necessário)
+    }
+
+    private void ExitGameOverScreen()
+    {
+        // Implementação da lógica de saída da tela de game over
     }
 
 }

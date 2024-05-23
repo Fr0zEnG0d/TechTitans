@@ -10,6 +10,8 @@ public class GameFlowView : MonoBehaviour
     public GameObject MainMenu;
     public GameObject Hud; //UI q fica na tela enquanto joga, score e vidas
     public GameObject PauseMenu; // Menu de Pausa
+    public GameObject GameOverScreen; // Tela de GameOver
+
 
     public TextMeshProUGUI LivesText;
     public TextMeshProUGUI ScoreText;
@@ -41,7 +43,7 @@ public class GameFlowView : MonoBehaviour
         Hud.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
         PauseMenu.gameObject.SetActive(false); // Inicialmente, o menu de pausa está oculto
-
+        GameOverScreen.SetActive(false); // Inicialmente, a tela de gameover está oculta
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class GameFlowView : MonoBehaviour
                 PlayerView.enabled = false;
                 break;
             case GameState.GameOverScreen:
+                GameOverScreen.SetActive(false);
                 break;
         }
     }
@@ -100,6 +103,7 @@ public class GameFlowView : MonoBehaviour
                 PlayerView.enabled = true;
                 break;
             case GameState.GameOverScreen:
+                GameOverScreen.SetActive(true);
                 break;
         }
     }
@@ -120,5 +124,12 @@ public class GameFlowView : MonoBehaviour
             m_controller.ChangeState(GameState.Playing);
         }
     }
+
+    public void OnRestartButtonPressed()
+    {
+        // Reiniciar o jogo ou voltar ao menu principal
+        m_controller.ChangeState(GameState.MainMenu);
+    }
+
 
 }

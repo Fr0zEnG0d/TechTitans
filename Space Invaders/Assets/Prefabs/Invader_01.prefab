@@ -13,20 +13,12 @@ PrefabInstance:
       value: Invader_01
       objectReference: {fileID: 0}
     - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0058
-      objectReference: {fileID: 0}
-    - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0029
-      objectReference: {fileID: 0}
-    - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0015
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3122857616062719152, guid: 9ccac628f3c4eab4e9d44ae18fda536d, type: 3}
       propertyPath: m_LocalPosition.z
